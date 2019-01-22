@@ -21,7 +21,7 @@ class SIForm extends StatefulWidget {
 class _SIFormState extends State<SIForm> {
   var _currencies = ['Dollars', 'Pounds', 'Rupess'];
   final _minPadding = 5.0;
-
+  var _currentItemSelected = 'Dollars';
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.title;
@@ -91,9 +91,9 @@ class _SIFormState extends State<SIForm> {
                       child: Text(value),
                     );
                   }).toList(),
-                  value: 'Rupess',
+                  value: _currentItemSelected,
                   onChanged: (String newValueSelected){
-
+                    _onDropDownItemSelected(newValueSelected);
                   }
                 )
                 )
@@ -141,5 +141,10 @@ class _SIFormState extends State<SIForm> {
       child: image,
       margin: EdgeInsets.all(_minPadding * 10),
     );
+  }
+  void _onDropDownItemSelected(String newValueSelected){
+    setState(() {
+          this._currentItemSelected = newValueSelected;
+    });
   }
 }
